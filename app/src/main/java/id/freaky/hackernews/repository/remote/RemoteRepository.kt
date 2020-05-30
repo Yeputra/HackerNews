@@ -1,4 +1,4 @@
-package id.freaky.hackernews.repository
+package id.freaky.hackernews.repository.remote
 
 import androidx.lifecycle.MutableLiveData
 import id.freaky.hackernews.model.CommentModel

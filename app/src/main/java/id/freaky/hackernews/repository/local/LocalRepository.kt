@@ -1,4 +1,4 @@
-package id.freaky.hackernews.repository
+package id.freaky.hackernews.repository.local
 
 import android.content.Context
 

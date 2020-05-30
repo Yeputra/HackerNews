@@ -3,6 +3,8 @@ package id.freaky.hackernews.repository
 import androidx.lifecycle.MutableLiveData
 import id.freaky.hackernews.model.CommentModel
 import id.freaky.hackernews.model.StoriesModel
+import id.freaky.hackernews.repository.local.LocalRepository
+import id.freaky.hackernews.repository.remote.RemoteRepository
 
 class Repository(val remoteRepository: RemoteRepository, val localRepository: LocalRepository): NewsDataSource {
 

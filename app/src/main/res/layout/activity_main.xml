@@ -1,73 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.main.MainActivity">
 
-    <LinearLayout
-        android:id="@+id/ll_main"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:visibility="gone">
+        android:layout_height="match_parent">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:layout_margin="@dimen/dimen_8p"
-            android:textColor="@android:color/black"
-            android:text="My fav"/>
-
-        <TextView
-            android:id="@+id/tv_title_fav_stories"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="28sp"
-            android:layout_margin="@dimen/dimen_8p"
-            android:textColor="@android:color/black"
-            android:gravity="center"
-            android:text="Fav stories"/>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@android:color/darker_gray"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:layout_margin="@dimen/dimen_8p"
-            android:textColor="@android:color/black"
-            android:text="Last story"/>
-
-        <TextView
-            android:id="@+id/tv_title_last_stories"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="28sp"
-            android:layout_margin="@dimen/dimen_8p"
-            android:textColor="@android:color/black"
-            android:gravity="center"
-            android:text="Last stories"/>
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_top_stories"
+        <LinearLayout
+            android:id="@+id/ll_main"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:itemCount="5"
-            tools:listitem="@layout/item_top_stories"/>
+            android:orientation="vertical"
+            android:visibility="gone">
 
-    </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:layout_margin="@dimen/dimen_8p"
+                android:textColor="@android:color/black"
+                android:text="My fav"/>
 
-    <ProgressBar
-        android:id="@+id/pb_main"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_gravity="center"/>
+            <TextView
+                android:id="@+id/tv_title_fav_stories"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="28sp"
+                android:layout_margin="@dimen/dimen_8p"
+                android:textColor="@android:color/black"
+                android:gravity="center"
+                android:text="Fav stories"/>
 
-</FrameLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:layout_margin="@dimen/dimen_8p"
+                android:textColor="@android:color/black"
+                android:text="Last story"/>
+
+            <TextView
+                android:id="@+id/tv_title_last_stories"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="28sp"
+                android:layout_margin="@dimen/dimen_8p"
+                android:textColor="@android:color/black"
+                android:gravity="center"
+                android:text="Last stories"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_top_stories"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_800dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:itemCount="5"
+                tools:listitem="@layout/item_top_stories"/>
+
+        </LinearLayout>
+
+        <ProgressBar
+            android:id="@+id/pb_main"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"/>
+
+    </FrameLayout>
+
+</androidx.core.widget.NestedScrollView>
