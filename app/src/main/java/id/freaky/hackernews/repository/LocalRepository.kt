@@ -12,6 +12,7 @@ class LocalRepository(context: Context) {
     fun faveStory(title: String){
         val editor = sharedpreferences.edit()
         editor.putString("faved-story", title)
+        editor.apply()
     }
 
     fun getFaveStory(): String? {

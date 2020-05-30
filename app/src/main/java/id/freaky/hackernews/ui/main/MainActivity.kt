@@ -29,12 +29,14 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
+        getFavedStory()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        this.supportActionBar!!.setTitle("Top Stories")
         setupViewModel()
         getData()
     }
@@ -60,20 +62,18 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun getFavedStory(){
+        tvTitleFavSories = find(R.id.tv_title_fav_stories)
         viewModel.getFaveStories().observe(this, Observer {favedStory->
             tvTitleFavSories.text = favedStory
         })
     }
 
     private fun initView(){
-        this.supportActionBar!!.setTitle("Top Stories")
 
-        tvTitleFavSories = find(R.id.tv_title_fav_stories)
         llMain = find(R.id.ll_main)
         pbMain = find(R.id.pb_main)
         rvTopStories = find(R.id.rv_top_stories)
 
-        getFavedStory()
         llMain.visibility = View.VISIBLE
         pbMain.visibility = View.GONE
 
