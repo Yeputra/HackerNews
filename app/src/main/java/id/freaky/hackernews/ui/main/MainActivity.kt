@@ -50,12 +50,14 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun getData() {
+        pbMain = find(R.id.pb_main)
         viewModel.getTopStories().observe(this, Observer { topStories ->
             var counter:Int = 0
             for (id in topStories)
                 viewModel.getDetailStories(id).observe(this, Observer { detailStories ->
                     stories.add(detailStories)
                     counter += 1
+                    pbMain.progress = counter/5
                     if (counter == topStories.count()){
                         initView()
                     }
@@ -80,7 +82,6 @@ class MainActivity : AppCompatActivity() {
     private fun initView(){
 
         llMain = find(R.id.ll_main)
-        pbMain = find(R.id.pb_main)
         rvTopStories = find(R.id.rv_top_stories)
 
         llMain.visibility = View.VISIBLE

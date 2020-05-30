@@ -57,7 +57,6 @@ class DetailActivity : AppCompatActivity() {
 
     private fun initView(){
         llDetail = find(R.id.ll_detail)
-        pbDetail = find(R.id.pb_detail)
         tvTitleDetail = find(R.id.tv_title_detail)
         tvAuthorDetail = find(R.id.tv_author_detail)
         tvDateDetail = find(R.id.tv_date_detail)
@@ -72,6 +71,7 @@ class DetailActivity : AppCompatActivity() {
     }
 
     private fun getComment() {
+        pbDetail = find(R.id.pb_detail)
         viewModel.getDetailStories(id).observe(this, Observer { detailStories ->
 
             tvTitleDetail.text = detailStories.title
@@ -90,6 +90,7 @@ class DetailActivity : AppCompatActivity() {
                     .observe(this, Observer { detailComment ->
                         comments.add(detailComment)
                         counter += 1
+                        pbDetail.progress = counter
                         if (counter == detailStories.kids.count()){
                             populateData()
                         }
