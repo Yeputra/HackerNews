@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.detail.DetailActivity">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/ll_detail"
+            android:visibility="invisible"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_title_detail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/dimen_8p"
+                android:gravity="center"
+                android:maxLines="3"
+                android:text="Title"
+                android:textColor="@android:color/black"
+                android:textSize="36sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_author_detail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dimen_8p"
+                android:layout_marginTop="@dimen/dimen_8p"
+                android:layout_marginRight="@dimen/dimen_8p"
+                android:maxLines="3"
+                android:text="by: author"
+                android:textColor="@android:color/black"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_date_detail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dimen_8p"
+                android:layout_marginRight="@dimen/dimen_8p"
+                android:maxLines="3"
+                android:text="Date"
+                android:textColor="@android:color/black"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dimen_8p"
+                android:layout_marginTop="@dimen/dimen_32dp"
+                android:layout_marginRight="@dimen/dimen_8p"
+                android:maxLines="3"
+                android:text="Description"
+                android:textColor="@android:color/black"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/ttv_description_detail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dimen_8p"
+                android:layout_marginRight="@dimen/dimen_8p"
+                android:maxLines="3"
+                android:text="Description"
+                android:textAlignment="textStart"
+                android:textColor="@android:color/black"
+                android:textSize="18sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dimen_8p"
+                android:layout_marginTop="@dimen/dimen_32dp"
+                android:layout_marginRight="@dimen/dimen_8p"
+                android:maxLines="3"
+                android:text="Comment"
+                android:textColor="@android:color/black"
+                android:textSize="24sp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_comment_detail"
+                android:layout_width="match_parent"
+                android:layout_height="400dp"
+                android:layout_marginTop="@dimen/dimen_4dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/item_comment"
+                tools:itemCount="5"/>
+
+        </LinearLayout>
+
+        <ProgressBar
+            android:id="@+id/pb_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"/>
+
+    </FrameLayout>
+
+</androidx.core.widget.NestedScrollView>

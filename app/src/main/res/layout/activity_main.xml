@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.main.MainActivity">
+
+    <LinearLayout
+        android:id="@+id/ll_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="32sp"
+            android:layout_margin="@dimen/dimen_8p"
+            android:textColor="@android:color/black"
+            android:text="My fav"/>
+
+        <TextView
+            android:id="@+id/tv_title_fav_stories"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="28sp"
+            android:layout_margin="@dimen/dimen_8p"
+            android:textColor="@android:color/black"
+            android:gravity="center"
+            android:text="Fav stories"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_top_stories"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:itemCount="5"
+            tools:listitem="@layout/item_top_stories"/>
+
+    </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/pb_main"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"/>
+
+</FrameLayout>
