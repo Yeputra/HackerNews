@@ -59,6 +59,12 @@ class MainActivity : AppCompatActivity() {
         })
     }
 
+    private fun getFavedStory(){
+        viewModel.getFaveStories().observe(this, Observer {favedStory->
+            tvTitleFavSories.text = favedStory
+        })
+    }
+
     private fun initView(){
         this.supportActionBar!!.setTitle("Top Stories")
 
@@ -67,8 +73,7 @@ class MainActivity : AppCompatActivity() {
         pbMain = find(R.id.pb_main)
         rvTopStories = find(R.id.rv_top_stories)
 
-        val sharedPref = this.getPreferences(Context.MODE_PRIVATE)
-        tvTitleFavSories.text = sharedPref.getString(getString(R.string.story_faved),"Please choosee favorite stories")
+        getFavedStory()
         llMain.visibility = View.VISIBLE
         pbMain.visibility = View.GONE
 

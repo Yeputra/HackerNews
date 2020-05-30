@@ -1,9 +1,9 @@
 package id.freaky.hackernews.ui.detail
 
-import android.content.Context
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -44,6 +44,7 @@ class DetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
 
+        this.supportActionBar!!.setTitle("Story Detail")
         val extras = intent.extras
         if (extras != null) {
             id = extras.getInt("id")
@@ -98,7 +99,6 @@ class DetailActivity : AppCompatActivity() {
     }
 
     private fun populateData(){
-        this.supportActionBar!!.setTitle("Story Detail")
         llDetail.visibility = View.VISIBLE
         pbDetail.visibility = View.GONE
         mAdapter = CommentAdapter(this, comments)
@@ -127,18 +127,22 @@ class DetailActivity : AppCompatActivity() {
 
                 false -> {
                     data.isFaved = true
-                    Toast.makeText(this, "Story Faved", Toast.LENGTH_LONG).show()
                     item?.icon = ContextCompat.getDrawable(this, R.drawable.ic_star_filled)
+                    saveStory()
 
-                    val sharedPref = this.getPreferences(Context.MODE_PRIVATE)
-                    with (sharedPref.edit()) {
-                        putString(getString(R.string.story_faved), data.title)
-                        commit()
-                    }
+                    viewModel.getFaveStories().observe(this, Observer {favedStory->
+
+                        Log.d("SAVED", favedStory)
+                    })
+
                 }
             }
             return true
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    private fun saveStory(){
+        data.title?.let { viewModel.faveStories(it) }
     }
 }

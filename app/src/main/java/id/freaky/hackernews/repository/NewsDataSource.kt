@@ -8,4 +8,6 @@ interface NewsDataSource {
     fun getTopStories(): MutableLiveData<List<Int>>
     fun getDetailStories(id: Int): MutableLiveData<StoriesModel>
     fun getDetailComment(id: Int): MutableLiveData<CommentModel>
+    fun faveStory(title:  String)
+    fun getSavedStory(): String?
 }
