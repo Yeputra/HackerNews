@@ -1,6 +1,7 @@
 package id.freaky.hackernews.ui.detail
 
 import android.content.Context
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
@@ -10,6 +11,7 @@ import android.widget.LinearLayout
 import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -37,6 +39,7 @@ class DetailActivity : AppCompatActivity() {
     lateinit var tvDescriptionDetail: TextView
     lateinit var rvComment: RecyclerView
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
@@ -72,7 +75,12 @@ class DetailActivity : AppCompatActivity() {
 
             tvTitleDetail.text = detailStories.title
             tvAuthorDetail.text = "by: " + detailStories.by
-            tvDateDetail.text = detailStories.time.toString()
+
+            val sdf = java.text.SimpleDateFormat("dd-MM-yyyy")
+            val date = java.util.Date(detailStories.time?.toLong()!!.times(1000))
+            sdf.format(date)
+
+            tvDateDetail.text = sdf.format(date)
             tvDescriptionDetail.text = detailStories.url
 
             var counter = 0
