@@ -1,5 +1,6 @@
 package id.freaky.hackernews.ui.detail
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
@@ -14,7 +15,6 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import butterknife.ButterKnife
 import id.freaky.hackernews.R
 import id.freaky.hackernews.di.Injection
 import id.freaky.hackernews.model.CommentModel
@@ -40,7 +40,6 @@ class DetailActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
-        ButterKnife.bind(this)
 
         val extras = intent.extras
         if (extras != null) {
@@ -53,6 +52,8 @@ class DetailActivity : AppCompatActivity() {
     }
 
     private fun initView(){
+        llDetail = find(R.id.ll_detail)
+        pbDetail = find(R.id.pb_detail)
         tvTitleDetail = find(R.id.tv_title_detail)
         tvAuthorDetail = find(R.id.tv_author_detail)
         tvDateDetail = find(R.id.tv_date_detail)
@@ -89,6 +90,7 @@ class DetailActivity : AppCompatActivity() {
     }
 
     private fun populateData(){
+        this.supportActionBar!!.setTitle("Story Detail")
         llDetail.visibility = View.VISIBLE
         pbDetail.visibility = View.GONE
         mAdapter = CommentAdapter(this, comments)
@@ -106,12 +108,29 @@ class DetailActivity : AppCompatActivity() {
         val id = item.getItemId()
 
         if (id == R.id.action_fav) {
-            Toast.makeText(this, "Item fav Clicked", Toast.LENGTH_LONG).show()
-            item?.icon = ContextCompat.getDrawable(this, R.drawable.ic_star_filled)
+
+            when(data.isFaved){
+                true -> {
+                    data.isFaved = false
+                    Toast.makeText(this, "Story Deleted from fav", Toast.LENGTH_LONG).show()
+                    item?.icon = ContextCompat.getDrawable(this, R.drawable.ic_start_empty)
+
+                }
+
+                false -> {
+                    data.isFaved = true
+                    Toast.makeText(this, "Story Faved", Toast.LENGTH_LONG).show()
+                    item?.icon = ContextCompat.getDrawable(this, R.drawable.ic_star_filled)
+
+                    val sharedPref = this.getPreferences(Context.MODE_PRIVATE)
+                    with (sharedPref.edit()) {
+                        putString(getString(R.string.story_faved), data.title)
+                        commit()
+                    }
+                }
+            }
             return true
         }
-
         return super.onOptionsItemSelected(item)
-
     }
 }
