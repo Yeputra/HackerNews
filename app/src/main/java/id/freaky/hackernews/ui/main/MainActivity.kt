@@ -24,12 +24,14 @@ class MainActivity : AppCompatActivity() {
 
     lateinit var rvTopStories: RecyclerView
     lateinit var tvTitleFavSories: TextView
+    lateinit var tvTitleLastStories: TextView
     lateinit var llMain: LinearLayout
     lateinit var pbMain: ProgressBar
 
     override fun onResume() {
         super.onResume()
         getFavedStory()
+        getLastStory()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -65,6 +67,13 @@ class MainActivity : AppCompatActivity() {
         tvTitleFavSories = find(R.id.tv_title_fav_stories)
         viewModel.getFaveStories().observe(this, Observer {favedStory->
             tvTitleFavSories.text = favedStory
+        })
+    }
+
+    private fun getLastStory(){
+        tvTitleLastStories = find(R.id.tv_title_last_stories)
+        viewModel.getLastStory().observe(this, Observer { lastStory ->
+            tvTitleLastStories.text = lastStory
         })
     }
 

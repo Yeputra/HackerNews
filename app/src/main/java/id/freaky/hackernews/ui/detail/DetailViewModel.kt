@@ -28,4 +28,8 @@ class DetailViewModel(val repository: Repository): ViewModel() {
         favedStories.value = repository.getSavedStory()
         return favedStories
     }
+
+    fun saveStory(title: String) {
+        repository.saveStory(title)
+    }
 }

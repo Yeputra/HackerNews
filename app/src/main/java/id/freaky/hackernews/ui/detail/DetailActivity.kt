@@ -105,6 +105,7 @@ class DetailActivity : AppCompatActivity() {
         rvComment.layoutManager = LinearLayoutManager(this)
         rvComment.setHasFixedSize(true)
         rvComment.adapter = mAdapter
+        saveStory()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -128,7 +129,7 @@ class DetailActivity : AppCompatActivity() {
                 false -> {
                     data.isFaved = true
                     item?.icon = ContextCompat.getDrawable(this, R.drawable.ic_star_filled)
-                    saveStory()
+                    faveStory()
 
                     viewModel.getFaveStories().observe(this, Observer {favedStory->
 
@@ -142,7 +143,11 @@ class DetailActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
-    private fun saveStory(){
+    private fun faveStory(){
         data.title?.let { viewModel.faveStories(it) }
+    }
+
+    private fun saveStory(){
+        data.title?.let { viewModel.saveStory(it) }
     }
 }

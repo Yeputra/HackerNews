@@ -25,4 +25,12 @@ class Repository(val remoteRepository: RemoteRepository, val localRepository: Lo
     override fun getSavedStory(): String? {
         return localRepository.getFaveStory()
     }
+
+    override fun saveStory(title: String) {
+        localRepository.saveStory(title)
+    }
+
+    override fun getLastStory(): String? {
+        return localRepository.getLastStory()
+    }
 }

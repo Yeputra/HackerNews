@@ -10,6 +10,7 @@ import id.freaky.hackernews.repository.Repository
 class MainViewModel(val repository: Repository) : ViewModel() {
 
     private var favedStories = MutableLiveData<String>()
+    private var lastStories = MutableLiveData<String>()
 
     fun getTopStories(): LiveData<List<Int>> {
         return repository.getTopStories()
@@ -22,5 +23,10 @@ class MainViewModel(val repository: Repository) : ViewModel() {
     fun getFaveStories(): MutableLiveData<String> {
         favedStories.value = repository.getSavedStory()
         return favedStories
+    }
+
+    fun getLastStory(): MutableLiveData<String> {
+        lastStories.value = repository.getLastStory()
+        return lastStories
     }
 }

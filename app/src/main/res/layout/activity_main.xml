@@ -16,7 +16,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="32sp"
+            android:textSize="20sp"
             android:layout_margin="@dimen/dimen_8p"
             android:textColor="@android:color/black"
             android:text="My fav"/>
@@ -30,6 +30,29 @@
             android:textColor="@android:color/black"
             android:gravity="center"
             android:text="Fav stories"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:layout_margin="@dimen/dimen_8p"
+            android:textColor="@android:color/black"
+            android:text="Last story"/>
+
+        <TextView
+            android:id="@+id/tv_title_last_stories"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="28sp"
+            android:layout_margin="@dimen/dimen_8p"
+            android:textColor="@android:color/black"
+            android:gravity="center"
+            android:text="Last stories"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_top_stories"

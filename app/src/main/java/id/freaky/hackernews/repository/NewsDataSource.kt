@@ -10,4 +10,6 @@ interface NewsDataSource {
     fun getDetailComment(id: Int): MutableLiveData<CommentModel>
     fun faveStory(title:  String)
     fun getSavedStory(): String?
+    fun saveStory(title:  String)
+    fun getLastStory(): String?
 }
